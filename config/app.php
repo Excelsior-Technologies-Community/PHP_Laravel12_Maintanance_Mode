@@ -28,6 +28,8 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+    'maintenance_message' => env('MAINTENANCE_MESSAGE'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
