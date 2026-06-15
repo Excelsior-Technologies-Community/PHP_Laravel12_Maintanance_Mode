@@ -27,7 +27,13 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
-    
+    'maintenance_message' => env('MAINTENANCE_MESSAGE'),
+
+    'maintenance_start_time' => env('MAINTENANCE_START_TIME'),
+
+    'maintenance_end_time' => env('MAINTENANCE_END_TIME'),
+
+    'maintenance_contact_email' => env('MAINTENANCE_CONTACT_EMAIL'),
 
     'maintenance_message' => env('MAINTENANCE_MESSAGE'),
 

@@ -64,7 +64,27 @@
             font-size: 18px;
             line-height: 1.8;
             color: #d1d5db;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+        }
+
+        .info-box strong {
+            color: #38bdf8;
+        }
+
+        .info-box a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        .info-box a:hover {
+            text-decoration: underline;
         }
 
         #countdown {
@@ -121,6 +141,28 @@
             Sorry for the inconvenience. We are currently upgrading our system to serve you better.
         </p>
 
+        <!-- New Features -->
+        <div class="info-box">
+
+            <p>
+                <strong>Maintenance Started:</strong><br>
+                {{ config('app.maintenance_start_time') }}
+            </p>
+
+            <p>
+                <strong>Expected Completion:</strong><br>
+                {{ config('app.maintenance_end_time') }}
+            </p>
+
+            <p>
+                <strong>Support Email:</strong><br>
+                <a href="mailto:{{ config('app.maintenance_contact_email') }}">
+                    {{ config('app.maintenance_contact_email') }}
+                </a>
+            </p>
+
+        </div>
+
         <!-- Countdown -->
         <div id="countdown"></div>
 
@@ -132,13 +174,11 @@
     </div>
 
     <script>
-        // 2 Hours Countdown
         const endTime = new Date().getTime() + (2 * 60 * 60 * 1000);
 
         const timer = setInterval(function() {
 
             const now = new Date().getTime();
-
             const distance = endTime - now;
 
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) /
