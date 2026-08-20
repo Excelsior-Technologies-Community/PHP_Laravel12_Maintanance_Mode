@@ -35,7 +35,15 @@ return [
 
     'maintenance_contact_email' => env('MAINTENANCE_CONTACT_EMAIL'),
 
-    'maintenance_message' => env('MAINTENANCE_MESSAGE'),
+    'maintenance_progress' => (int) env('MAINTENANCE_PROGRESS', 0),
+
+    'maintenance_type' => env('MAINTENANCE_TYPE', 'general'),
+
+    'maintenance_status_updates' => json_decode(env('MAINTENANCE_STATUS_UPDATES', '[]'), true),
+
+    'maintenance_admin_token' => env('MAINTENANCE_ADMIN_TOKEN'),
+
+    'maintenance_favicon' => env('MAINTENANCE_FAVICON', '/favicon-maintenance.ico'),
 
     /*
     |--------------------------------------------------------------------------
@@ -130,6 +138,10 @@ return [
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
+        'except' => [
+            '/health',
+            '/up',
+        ],
     ],
 
 ];
